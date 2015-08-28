@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dancing Places</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/dashboard.js"></script>
+</head>
+<body>
+	<div style="background: {{color}};" class="topbar"></div>
+	<div class="greeting">Hi <span style="color: {{color}};">{{user.firstname}}</span>! Let's get dancing!</div>
+	<ul class="menu">
+		<li class="add-dance">Add New Dance</li>
+		{% if user.user_status == 1 %}
+		<li>Admin Tools</li>
+		{% endif %}
+		<li class="logout"><a style="color: {{color}};" href="/logout">Log out</a></li>
+	</ul>
+
+	<div class="holder">
+	<div class="dances">
+		<h3>Latest Dance Events</h3>
+		{% if events|length != 0 %}
+		{% for event in events %}
+		<div class="dance-event">
+			event
+		</div>
+		{% endfor %}
+		{% else %}
+		<h5>Nothing here yet! Check back later or <span class="add-dance" style="color: {{color}};">create your own dance event</span>!</h5>
+		{% endif %}
+	</div>
+	<form>
+		<input type="text" placeholder="Country">
+		<input type="text" placeholder="City">
+		<input type="text" placeholder="Address">
+		<h6>Type of Dance</h6><br><br>
+		<input type="checkbox" name="country-dance" value="country-dance"><h7>Country</h7><br><br>
+		<input type="checkbox" name="country" value="line" disabled="true">Line Dancing
+		<input type="checkbox" name="country" value="waltz" disabled="true">Country Waltz<br>
+		<input type="checkbox" name="country" value="ttwostep" disabled="true">Texas Two Step<br>
+		<input type="checkbox" name="country" value="twostep" disabled="true">Two Step<br>
+		<input type="checkbox" name="country" value="waltz" disabled="true">Polka<br><br>
+
+		<input type="checkbox" name="swing-dance" value="swing-dance"><h7>Swing</h7><br><br>
+		<input type="checkbox" name="swing" value="east-coast" disabled="true">East Coast<br>
+		<input type="checkbox" name="swing" value="west-coast" disabled="true">West Coast<br>
+		<input type="checkbox" name="swing" value="hustle" disabled="true">Hustle<br>
+		<input type="checkbox" name="swing" value="lindyhop" disabled="true">Lindy Hop<br>
+		<input type="checkbox" name="swing" value="lindy" disabled="true">Lindy<br><br>
+
+		<input type="checkbox" name="ballroom-dance" value="ballroom-dance"><h7>Ballroom</h7><br><br>
+		<input type="checkbox" name="ballroom" value="waltz" disabled="true">Waltz<br>
+		<input type="checkbox" name="ballroom" value="tango" disabled="true">Tango<br>
+		<input type="checkbox" name="ballroom" value="foxtrot" disabled="true">Foxtrot<br>
+		<input type="checkbox" name="ballroom" value="foxy" disabled="true">Foxy<br>
+		<input type="checkbox" name="ballroom" value="atango" disabled="true">Argentine Tango<br><br>
+
+		<input type="checkbox" name="latin-dance" value="latin-dance"><h7>Latin</h7><br><br>
+		<input type="checkbox" name="latin" value="salsa" disabled="true">Salsa<br>
+		<input type="checkbox" name="latin" value="bachata" disabled="true">Bachata<br>
+		<input type="checkbox" name="latin" value="merengue" disabled="true">Merengue<br>
+		<input type="checkbox" name="latin" value="cumbia" disabled="true">Cumbia<br>
+		<input type="checkbox" name="latin" value="rumba" disabled="true">Rumba<br>
+		<input type="checkbox" name="latin" value="chacha" disabled="true">Cha-Cha<br>
+		<input type="checkbox" name="latin" value="reggaeton" disabled="true">Reggaeton<br>
+		<input type="checkbox" name="latin" value="kizomba" disabled="true">Kizomba<br>
+		<input type="checkbox" name="latin" value="zouk" disabled="true">Zouk<br><br>
+
+		<input type="checkbox" name="club-dance" value="club-dance"><h7>Club</h7><br><br>
+		<input type="checkbox" name="club" value="grinding" disabled="true">Grinding<br>
+		<input type="checkbox" name="club" value="other" disabled="true">Other<br>
+
+		<input type="text" placeholder="Country">
+		<input type="text" placeholder="Country">
+		<input type="text" placeholder="Country">
+		<input type="text" placeholder="Country">
+	</form>
+	</div>
+</body>
+</html>

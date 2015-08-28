@@ -42,11 +42,11 @@ def login():
 		return redirect(url_for('dashboard'))
 
 @app.route("/dashboard", methods=['GET','POST'])
+@login_required
 def dashboard():
-	if current_user.user_status == 1:
-		return "Admin Logged in as - %r" % current_user.email
-	elif current_user.user_status == 0:
-		return "User logged in as - %r" % current_user.email
+	r = lambda: random.randint(0,255)
+	color = '#%02X%02X%02X' % (r(),r(),r())
+	return render_template("dashboard.html", user = current_user, color = color)
 
 @app.route('/logout')
 @login_required
