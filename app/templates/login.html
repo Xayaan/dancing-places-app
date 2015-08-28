@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dancing Places</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+</head>
+<body>
+	<div style="background: {{color}};" class="topbar"></div>
+
+	<div class="main-content">
+		<h2>Log In to <a href="/">Vedge</a></h2>
+			<form id="login-form" action="" method="post" enctype="multipart/form-data">
+				<h4>{{error}}</h4>
+				<div class="input-group-lg signup-box">
+				  {{ form.email(class="form-control", placeholder="Email", type="text")  }}
+				</div>
+				<div class="input-group-lg signup-box">
+				  {{ form.password(class="form-control", placeholder="••••••••", type="password")  }}
+				</div>
+				<button type="submit" style="background: {{color}};">Log In</button>
+			</form>
+		<h3>Sign Up <a href="/">here</a></h3>
+	</div>
+</body>
+</html>

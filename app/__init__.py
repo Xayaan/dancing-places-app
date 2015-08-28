@@ -16,4 +16,4 @@ manager.add_command('db', MigrateCommand)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-from app import routes, models
+from app import methods, routes, models
