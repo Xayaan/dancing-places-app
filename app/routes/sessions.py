@@ -3,7 +3,13 @@ from flask import render_template, request, jsonify, redirect, url_for, session
 from flask.ext.login import LoginManager, login_user, current_user, logout_user, login_required
 import random
 
-@app.route("/", methods=['GET','POST'])
+@app.route('/', methods=['GET', 'POST'])
+def user_home():
+	r = lambda: random.randint(0,255)
+	color = '#%02X%02X%02X' % (r(),r(),r())
+	return render_template("dashboard.html", color = color)
+
+@app.route("/xyz", methods=['GET','POST'])
 def home():
 	if current_user.is_anonymous():
 		r = lambda: random.randint(0,255)
@@ -46,7 +52,7 @@ def login():
 def dashboard():
 	r = lambda: random.randint(0,255)
 	color = '#%02X%02X%02X' % (r(),r(),r())
-	return render_template("dashboard.html", user = current_user, color = color)
+	return render_template("admin_dashboard.html", user = current_user, color = color)
 
 @app.route('/logout')
 @login_required

@@ -1,47 +1,6 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
 body {
 	line-height: 1;
 	font-family: 'Montserrat';
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
 }
 
 input{
@@ -51,11 +10,6 @@ input{
 
 input:focus, button:focus{
 	outline: none;
-}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
 }
 
 .topbar{
@@ -165,7 +119,8 @@ form{
 }
 
 .dances{
-	text-align: left;
+	float: left;
+	width: 40%;
 }
 
 .dances h3{
@@ -181,4 +136,238 @@ form{
 
 .add-dance{
 	cursor: pointer;
+}
+
+.main-form{
+	max-width: 50%;
+	float: right;
+	padding-bottom: 20px;
+	margin-bottom: 100px;
+}
+
+.main-form h6{
+	text-align: left;
+	margin: 20px 0px;
+}
+
+.main-form h5{
+	text-align: left;
+	display: inline-block;
+	padding: 10px 20px;
+	border: 1px #DDD solid;
+	border-radius: 4px;
+	text-transform: uppercase;
+	color: #DDD;
+	margin-right: 8px;
+	cursor: pointer;
+}
+
+.main-form h5:hover{
+	border: 1px #131313 solid;
+	color: #131313;
+}
+
+
+.active-upper:hover{
+	text-align: left;
+	display: inline-block;
+	padding: 10px 20px;
+	border: 1px #00B6FF solid;
+	border-radius: 4px;
+	background: #00B6FF;
+	text-transform: uppercase;
+	color: #FFF; 
+}
+
+.active-upper{
+	text-align: left;
+	display: inline-block;
+	padding: 10px 20px;
+	border: 1px #00B6FF solid;
+	border-radius: 4px;
+	background: #00B6FF;
+	text-transform: uppercase;
+	color: #FFF;
+}
+
+.main-form-input{
+	width: 100%;
+	height: 50px;
+	font-size: 18px;
+	margin-bottom: 10px;
+	border: 1px rgba(0,0,0,0.05) solid;
+	border-radius: 4px;
+}
+
+select{
+	width: 100%;
+	height: 50px;
+	font-size: 18px;
+	margin-bottom: 10px;
+	border: 1px rgba(0,0,0,0.05) solid;
+	border-radius: 4px;
+}
+
+select:focus{
+	outline: none;
+}
+
+.main-form-input:focus{
+	outline: none;
+	border: 1px #DDD solid;
+}
+
+.type-upper{
+	float: left;
+	margin-bottom: 40px;
+}
+
+.type-inner{
+	text-align: left;
+}
+
+.type-inner-item{
+	display: block;
+	margin: 20px 0px;
+}
+
+.type-inner-item input{
+	margin-right: 15px;
+}
+
+.type-inner-item input, .type-inner-item p{
+	display: inline-block;
+}
+
+.main-dollar-input{
+	width: 100%;
+	margin-top: 10px;
+	height: 60px;
+	border: 1px rgba(0,0,0,0.05) solid;
+	border-radius: 4px;
+	text-align: left;
+}
+
+.main-dollar-input p{
+	width: 100%;
+	font-size: 18px;
+	text-align: left;
+	color: #9A9A9A;
+	position: relative;
+	top: 19px;
+	left: 25px;
+}
+
+.main-dollar-input input{
+	width: 90%;
+	font-size: 20px;
+	height: 58px;
+	z-index: 10;
+	float: right;
+	position: relative;
+	top: -18px;
+	border: none;
+	border-left: 1px rgba(0,0,0,0.05) solid;
+	outline: none;
+}
+
+.upper-date{
+	margin-top: 20px;
+	text-align: left;
+	display: block;
+}
+
+.days{
+	text-align: left;
+}
+
+.days h4{
+	margin: 20px 0px
+}
+
+.days-item input, .days-item p{
+	display: inline-block;
+}
+
+.days-item{
+	margin: 20px 0px;
+}
+
+.days-item input{
+	margin-right: 20px;
+}
+
+.main-form h2{
+	margin: 0px 0px 30px 0px;
+	font-size: 25px;
+}
+
+.months{
+	text-align: right;
+	margin-top: -340px;
+}
+
+.months h4{
+	margin: 20px 0px
+}
+
+.months-item input, .months-item p{
+	display: inline-block;
+}
+
+.months-item{
+	margin: 20px 0px;
+}
+
+.months-item input{
+	margin-left: 20px;
+	float: right;
+}
+
+.others{
+	margin-top: 120px;
+}
+
+.submit{
+	width: 79%;
+	height: 50px;
+	background: #FFF;
+	border-radius: 4px;
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+.cancel{
+	width: 20%;
+	float: right;
+	border: 1px #DDD solid;
+	color: #DDD;
+	height: 50px;
+	background: #FFF;
+	border-radius: 4px;
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+.cancel:hover{
+	background: rgba(0,0,0,0.05);
+}
+
+.submit:hover{
+	background: rgba(0,0,0,0.05);
+}
+
+.buttons{
+	width: 100%;
+	text-align: left;
+	float: left;
+	margin: 30px 0px;
+}
+
+.tabloid{
+	margin-top: 20px;
 }

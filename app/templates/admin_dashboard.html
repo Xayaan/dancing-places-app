@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dancing Places</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+	<script src="../static/js/dashboard.js"></script>
+</head>
+<body>
+	<div style="background: {{color}};" class="topbar"></div>
+	<div class="greeting">Hi <span style="color: {{color}};">{{user.firstname}}</span>! Let's get dancing!</div>
+	<ul class="menu">
+		<li class="logout"><a style="color: {{color}};" href="/logout">Log out</a></li>
+	</ul>
+
+	<div class="holder">
+	<div class="dances">
+		<h3>Latest Dance Events</h3>
+		<div id="list">
+
+	    <input class="search"/>
+	    <button class="sort" data-sort="id">Sort by id</button>
+	    <button class="sort" data-sort="country">Sort by country</button>
+
+	    <table class="tabloid table table-bordered">
+		  <tr>
+		    <th>ID</th>
+		    <th>Dance Type</th>
+		    <th>Country</th>
+		    <th>Approve</th>
+		    <th>Delete</th>
+		  </tr>
+		  
+		  <tbody class="list">
+		  {% for dance in dances %}
+		  <tr>
+		    <td class="id">{{dance.id}}</td>
+		    <td class="type">{{dance.type_of_dance}}</td>
+		    <td class="country">{{dance.country}}, {{dance.city}}</td>
+		    <td><button class="approve-bttn">Approve</button></td>
+		    <td><button class="del-bttn">Delete</button></td>
+		  </tr>
+		  {% endfor %}
+		  </tbody>
+		</table>
+	</div>
+	</div>
+	<form class="main-form">
+		<h2 style="color: {{color}};">Let's kick off a new dance event!</h2>
+		<input type="text" class="main-form-input" placeholder="Country">
+		<input type="text" class="main-form-input" placeholder="City">
+		<input type="text" class="main-form-input" placeholder="Address">
+		<div class="main-dollar-input">
+			<p>$</p>
+			<input type="text" placeholder="Cost">
+		</div>
+		<h6>Type of Dance</h6>
+
+		<div class="type-upper">
+			<h5 class="country-upper">Country</h5>
+			<h5 class="swing-upper">Swing</h5>
+			<h5 class="ballroom-upper">Ballroom</h5>
+			<h5 class="latin-upper">Latin</h5>
+			<h5 class="club-upper">Club</h5>
+		</div><br><br><br><br>
+
+		<div class="type-inner">
+
+		</div>
+		<h6>Dress Code</h6>
+		<select>
+
+		  <option value="asyouare">Come As You Are</option>
+		  <option value="casual">Casual</option>
+		  <option value="pants">Pants and Nice Shirt</option>
+		  <option value="suit">Suit and Tie</option>
+		  <option value="tux">Tuxedo</option>
+		</select>
+
+		<div class="timing-selector">
+			<div class="upper-date">
+				<h6>How often?</h6>
+			</div>
+
+			<div class="append-times">
+			<div class="days">
+				<h4>Days</h4>
+				<div class="days-item">
+					<input type="checkbox" class="everyday" onclick="all_check();"><p>Everyday</p>
+				</div>
+				<div class="days-item">
+					<input type="checkbox" class="all-days-one"><p>Saturday</p>
+				</div>
+				<div class="days-item">
+					<input type="checkbox" class="all-days-one"><p>Sunday</p>
+				</div>
+				<div class="days-item">
+					<input type="checkbox" class="all-days-one"><p>Monday</p>
+				</div>
+				<div class="days-item">
+					<input type="checkbox" class="all-days-one"><p>Tuesday</p>
+				</div>
+				<div class="days-item">
+					<input type="checkbox" class="all-days-one"><p>Wednesday</p>
+				</div>
+				<div class="days-item">
+					<input type="checkbox" class="all-days-one"><p>Thursday</p>
+				</div>
+				<div class="days-item">
+					<input type="checkbox" class="all-days-one"><p>Friday</p>
+				</div>
+			</div>
+			<div class="months">
+				<h4>Months</h4>
+				<div class="months-item">
+					<input type="radio" name="month"><p>Every month</p>
+				</div>
+				<div class="months-item">
+					<input type="radio" name="month"><p>Every other month</p>
+				</div>
+				<div class="months-item">
+					<input type="radio" name="month"><p>Every second</p>
+				</div>
+				<div class="months-item">
+					<input type="radio" name="month"><p>Every third</p>
+				</div>
+				<div class="months-item">
+					<input type="radio" name="month"><p>Every fourth</p>
+				</div>
+				<div class="months-item">
+					<input type="radio" name="month"><p>Every fifth</p>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="others">
+		<h6>Optional Information</h6>
+		<input type="text" class="main-form-input" placeholder="Website">
+		<input type="text" class="main-form-input" placeholder="Facebook Page">
+		<input type="text" class="main-form-input" placeholder="Twitter Handle">
+		<input type="text" class="main-form-input" placeholder="Meetup">
+		<input type="text" class="main-form-input" placeholder="Contact Person Email">
+		<input type="text" class="main-form-input" placeholder="Additional Notes">
+		</div>
+
+		<div class="buttons">
+		<button class="submit" style="color: {{color}}; border: 1px {{color}} solid;">Submit for Approval</button>
+		<button class="cancel">Cancel</button>
+		</div>
+	</form>
+	</div>
+</body>
+<script type="text/javascript">
+	var options = {
+    valueNames: [ 'id', 'country', 'type']
+};
+
+var hackerList = new List('list', options);
+</script>
+</html>
