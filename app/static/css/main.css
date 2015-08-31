@@ -32,7 +32,7 @@ input:focus, button:focus{
 	letter-spacing: 1px;
 }
 
-form{
+.main-form{
 	border: 1px #DDD solid;
 	padding: 40px;
 	border-radius: 4px;
@@ -147,6 +147,7 @@ form{
 
 .main-form h6{
 	text-align: left;
+	font-size: 24px;
 	margin: 20px 0px;
 }
 
@@ -265,7 +266,7 @@ select:focus{
 	z-index: 10;
 	float: right;
 	position: relative;
-	top: -18px;
+	top: -28px;
 	border: none;
 	border-left: 1px rgba(0,0,0,0.05) solid;
 	outline: none;

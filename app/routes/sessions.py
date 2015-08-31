@@ -6,8 +6,9 @@ import random
 @app.route('/', methods=['GET', 'POST'])
 def user_home():
 	r = lambda: random.randint(0,255)
+	dances = models.core.Dance.query.all()
 	color = '#%02X%02X%02X' % (r(),r(),r())
-	return render_template("dashboard.html", color = color)
+	return render_template("dashboard.html", color = color, dances = dances)
 
 @app.route("/xyz", methods=['GET','POST'])
 def home():
@@ -47,12 +48,37 @@ def login():
 	else:
 		return redirect(url_for('dashboard'))
 
+@app.route("/dance/add", methods=['GET','POST'])
+def dance_add():
+	dance_request = models.core.Dance(country = request.args.get('country', '0'), city = request.args.get('city', '0'), address = request.args.get('address', '0'), cost = request.args.get('cost', '0'), type_of_dance = request.args.get('dance_type', '0'), dress_code = request.args.get('dress', '0'), months = request.args.get('months', '0'), website = request.args.get('website', '0'), facebook = request.args.get('facebook', '0'), twitter = request.args.get('twitter', '0'), meetup = request.args.get('meetup', '0'), contact_email = request.args.get('contact', '0'), notes = request.args.get('notes', '0'), approved = False)
+
+	db.session.add(dance_request)
+	db.session.commit()
+	return jsonify(string = "200 OK", object_id = dance_request.id)
+
+@app.route("/dance/approve", methods=['GET','POST'])
+@login_required
+def dance_approve():
+	dance_request = models.core.Dance.query.filter_by(id = request.args.get('object_id', '0')).first()
+	dance_request.approved = True
+	db.session.commit()
+	return jsonify(string = "200 OK", object_id = dance_request.id, type = dance_request.type_of_dance, country = dance_request.country, city = dance_request.city)
+
+@app.route("/dance/delete", methods=['GET','POST'])
+@login_required
+def dance_cancel():
+	dance_request = models.core.Dance.query.filter_by(id = request.args.get('object_id', '0')).first()
+	db.session.delete(dance_request)
+	db.session.commit()
+	return jsonify(string = "200 OK")
+
 @app.route("/dashboard", methods=['GET','POST'])
 @login_required
 def dashboard():
 	r = lambda: random.randint(0,255)
+	dances = models.core.Dance.query.all()
 	color = '#%02X%02X%02X' % (r(),r(),r())
-	return render_template("admin_dashboard.html", user = current_user, color = color)
+	return render_template("admin_dashboard.html", user = current_user, color = color, dances = dances)
 
 @app.route('/logout')
 @login_required
