@@ -2,7 +2,7 @@
 =================
 
 
-This is the prototype phase app for the DancingPlaces app made by Arsalan Bashir
+This is the prototype phase app for the DancingPlaces app.
 
 ### Instructions for use
 ========================
