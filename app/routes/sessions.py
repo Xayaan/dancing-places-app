@@ -62,7 +62,7 @@ def dance_approve():
 	dance_request = models.core.Dance.query.filter_by(id = request.args.get('object_id', '0')).first()
 	dance_request.approved = True
 	db.session.commit()
-	return jsonify(string = "200 OK", object_id = dance_request.id, type = dance_request.type_of_dance, country = dance_request.country, city = dance_request.city)
+	return jsonify(string = "200 OK", object_id = dance_request.id, type = dance_request.type_of_dance, country = dance_request.country, city = dance_request.city, address = dance_request.address, dress = dance_request.dress_code, cost = dance_request.cost)
 
 @app.route("/dance/delete", methods=['GET','POST'])
 @login_required

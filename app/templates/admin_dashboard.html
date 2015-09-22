@@ -4,182 +4,200 @@
 	<title>Dancing Places</title>
 	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
-	<script src="../static/js/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
-	<script src="../static/js/dashboard.js"></script>
-	<script src="../static/js/admin_dashboard.js"></script>
 </head>
 <body>
-	<div style="background: {{color}};" class="topbar"></div>
-	<div class="greeting">Hi <span style="color: {{color}};">{{user.firstname}}</span>! Let's get dancing!</div>
-	<ul class="menu">
-		<li class="logout"><a style="color: {{color}};" href="/logout">Log out</a></li>
-	</ul>
-
-	<div class="holder">
-	<div class="dances">
-		<h3>Latest Dance Events</h3>
-		<div id="list">
-		<div class="form-inline">
-		  <div class="form-group">
-		    <div class="input-group">
-		      <input type="text" class="search form-control" placeholder="Search here with Filters">
-		    </div>
-		  </div>
-		  <button class="sort btn btn-default" data-sort="id">Sort by id</button>
-		   <button class="sort btn btn-default" data-sort="country">Sort by country</button>
-		</div>	
-	    <table class="tabloid table table-bordered">
-		  <tr>
-		    <th>ID</th>
-		    <th>Dance Type</th>
-		    <th>Country</th>
-		    <th>Approve</th>
-		    <th>Delete</th>
-		  </tr>
-		 
-		  <tbody class="list" id="new_add_dance">
-		  {% if dances|length != 0 %}
-		  {% for dance in dances %}
-		  {% if not dance.approved %}
-		  <tr class="active">
-		    <td class="id">{{dance.id}}</td>
-		    <td class="type">{{dance.type_of_dance}}</td>
-		    <td class="country">{{dance.country}}, {{dance.city}}</td>
-		    <td><button class="approve-bttn btn btn-success btn-block">Approve</button></td>
-		    <td><button class="del-bttn btn btn-danger btn-block">Delete</button></td>
-		  </tr>
-		  {% else %}
-		  <tr class="success">
-		    <td class="id">{{dance.id}}</td>
-		    <td class="type">{{dance.type_of_dance}}</td>
-		    <td class="country">{{dance.country}}, {{dance.city}}</td>
-		    <td>Already Approved</button></td>
-		    <td><button class="del-bttn btn btn-danger btn-block">Cancel</button></td>
-		  </tr>
-		  {% endif %}
-		  {% endfor %}
-		  {% else %}
-		  <tr>
-		    <td class="id"></td>
-		    <td class="type"></td>
-		    <td class="country"></td>
-		    <td></td>
-		    <td></td>
-		  </tr>
-		  {% endif %}
-		  </tbody>
-		</table>
-	</div>
-	</div>
-	<div class="main-form">
-		<h2 style="color: {{color}};">Let's kick off a new dance event!</h2>
-		<input type="text" class="main-form-input" id="country-input" placeholder="Country">
-		<input type="text" class="main-form-input" id="city-input" placeholder="City">
-		<input type="text" class="main-form-input" id="address-input" placeholder="Address">
-		<div class="main-dollar-input">
-			<p>$</p>
-			<input type="text" id="cost-input" placeholder="Cost">
-		</div>
-		<h6>Type of Dance</h6>
-
-		<div class="type-upper">
-			<h5 class="country-upper upper">Country</h5>
-			<h5 class="swing-upper upper">Swing</h5>
-			<h5 class="ballroom-upper upper">Ballroom</h5>
-			<h5 class="latin-upper upper">Latin</h5>
-			<h5 class="club-upper upper">Club</h5>
-		</div><br><br><br><br>
-
-		<div class="type-inner">
-		</div>
-
-		<h6>Dress Code</h6>
-		<select id="dress-input" >
-		  <option value="asyouare">Come As You Are</option>
-		  <option value="casual">Casual</option>
-		  <option value="pants">Pants and Nice Shirt</option>
-		  <option value="suit">Suit and Tie</option>
-		  <option value="tux">Tuxedo</option>
-		</select>
-
-		<div class="timing-selector">
-			<div class="upper-date">
-				<h6>How often?</h6>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog actual-form" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Found a new place to dance with others? Enter it here!</h4>
 			</div>
+			<div class="modal-body">
+				<br>
+				<h4>Basic Information</h4><br>
+				<div class="row">
+					<div class="col-xs-12 col-md-6">
+						<input type="text" class="main-form-input form-control" id="country-input" placeholder="Country">
+					</div>
+					<div class="col-xs-12 col-md-6">
+						<input type="text" class="main-form-input form-control" id="city-input" placeholder="City">
+					</div>
+				</div>
+			</br>
+				<div class="form-group">
+					<input type="text" class="form-control" id="address-input" placeholder="Enter a Valid Address Here...">
+				</div>
+				<div class="input-group">
+					<div class="input-group-addon">$</div>
+					<input type="text" class="form-control" id="cost-input" placeholder="Cost">
+					<div class="input-group-addon">.00</div>
+				</div><br>
+				<h4>Type of Dance</h4>
+				<div class="type-upper">
+					<h5 class="country-upper upper">Country</h5>
+					<h5 class="swing-upper upper">Swing</h5>
+					<h5 class="ballroom-upper upper">Ballroom</h5>
+					<h5 class="latin-upper upper">Latin</h5>
+					<h5 class="club-upper upper">Club</h5>
+				</div><br>
+				<div class="type-inner">
+				</div><br>
 
-			<div class="append-times">
-			<div class="days">
-				<h4>Days</h4>
-				<div class="days-item">
-					<input type="checkbox" class="everyday" onclick="all_check();"><p>Everyday</p>
+				<h4>Minimum Dress Code</h4><br>
+				<select id="dress-input" class="form-control">
+					<option value="asyouare">Come As You Are</option>
+					<option value="casual">Casual</option>
+					<option value="pants">Pants and Nice Shirt</option>
+					<option value="suit">Suit and Tie</option>
+					<option value="tux">Tuxedo</option>
+				</select>
+
+				<div class="timing-selector">
+					<div class="upper-date"><br>
+						<h4>How often?</h4>
+					</div>
+
+					<div class="append-times row">
+					<div class="days col-xs-12 col-md-6">
+						<h5>Days</h5>
+						<div class="well well-sm">
+							<div class="checkbox"> <label> <input type="checkbox" name="days" value="everyday" onclick="all_check();" class="everyday">Everyday</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="days" value="saturday" class="all-days-one">Saturday</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="days" value="sunday" class="all-days-one">Sunday</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="days" value="monday" class="all-days-one">Monday</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="days" value="tuesday" class="all-days-one">Tuesday</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="days" value="wednesday" class="all-days-one">Wednesday</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="days" value="thursday" class="all-days-one">Thursday</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="days" value="friday" class="all-days-one">Friday</label></div>
+						</div>
+					</div>
+					<div class="months col-xs-12 col-md-6">
+						<h4>Months</h4>
+						<div class="well well-sm">
+							<div class="checkbox"> <label> <input type="checkbox" name="months" value="jan" class="all-months-one">January</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="months" value="feb" class="all-months-one">February</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="months" value="march" class="all-months-one">March</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="months" value="apr" class="all-months-one">April</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="months" value="may" class="all-months-one">May</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="months" value="jun" class="all-months-one">June</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="months" value="jul" class="all-months-one">July</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="months" value="aug" class="all-months-one">August</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="months" value="sept" class="all-months-one">September</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="months" value="oct" class="all-months-one">October</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="months" value="nov" class="all-months-one">November</label></div>
+							<div class="checkbox"> <label> <input type="checkbox" name="months" value="dec" class="all-months-one">December</label></div>
+						</div>
+					</div>
+					</div>
 				</div>
-				<div class="days-item">
-					<input type="checkbox" class="all-days-one"><p>Saturday</p>
+				<div class="others"><br>
+				<h4>Optional Information</h4><br>
+				<div class="form-group">
+					<input type="text" class="main-form-input form-control" id="website-input" placeholder="Website URL"><br>
+					<input type="text" class="main-form-input form-control" id="facebook-input" placeholder="Facebook URL"><br>
+					<input type="text" class="main-form-input form-control" id="twitter-input" placeholder="Twitter URL"><br>
+					<input type="text" class="main-form-input form-control" id="meetup-input" placeholder="Meetup URL"><br>
+					<input type="text" class="main-form-input form-control" id="contact-input" placeholder="Contact Person Email"><br>
+					<input type="text" class="main-form-input form-control" id="additional-input" placeholder="Additional Notes">
 				</div>
-				<div class="days-item">
-					<input type="checkbox" class="all-days-one"><p>Sunday</p>
-				</div>
-				<div class="days-item">
-					<input type="checkbox" class="all-days-one"><p>Monday</p>
-				</div>
-				<div class="days-item">
-					<input type="checkbox" class="all-days-one"><p>Tuesday</p>
-				</div>
-				<div class="days-item">
-					<input type="checkbox" class="all-days-one"><p>Wednesday</p>
-				</div>
-				<div class="days-item">
-					<input type="checkbox" class="all-days-one"><p>Thursday</p>
-				</div>
-				<div class="days-item">
-					<input type="checkbox" class="all-days-one"><p>Friday</p>
 				</div>
 			</div>
-			<div class="months">
-				<h4>Months</h4>
-				<div class="months-item">
-					<input type="radio" value="every" name="month"><p>Every month</p>
-				</div>
-				<div class="months-item">
-					<input type="radio" value="other" name="month"><p>Every other month</p>
-				</div>
-				<div class="months-item">
-					<input type="radio" value="second" name="month"><p>Every second</p>
-				</div>
-				<div class="months-item">
-					<input type="radio" value="third" name="month"><p>Every third</p>
-				</div>
-				<div class="months-item">
-					<input type="radio" value="fourth" name="month"><p>Every fourth</p>
-				</div>
-				<div class="months-item">
-					<input type="radio" value="fifth" name="month"><p>Every fifth</p>
-				</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary submit-dance">Submit for Review</button>
 			</div>
-			</div>
-		</div>
-		<div class="others">
-		<h6>Optional Information</h6>
-		<input type="text" class="main-form-input" id="website-input" placeholder="Website">
-		<input type="text" class="main-form-input" id="facebook-input" placeholder="Facebook Page">
-		<input type="text" class="main-form-input" id="twitter-input" placeholder="Twitter Handle">
-		<input type="text" class="main-form-input" id="meetup-input" placeholder="Meetup">
-		<input type="text" class="main-form-input" id="contact-input" placeholder="Contact Person Email">
-		<input type="text" class="main-form-input" id="additional-input" placeholder="Additional Notes">
-		</div>
-
-		<div class="buttons">
-		<button class="submit" style="color: {{color}}; border: 1px {{color}} solid;">Submit for Approval</button>
-		<button class="cancel">Cancel</button>
 		</div>
 	</div>
 	</div>
+
+
+	<div class="topbar"></div>
+	<div class="container">
+		<div class="row">
+			<div class="logo"><img class="logo-img" src="../static/img/logo.png"><span class="label label-info">ADMIN</span></div>
+  	</div>
+		<div id="mainlist">
+		<input type="text" class="search form-control" placeholder="Type Keywords Here and Press Enter ... ">
+		<ul class="dance-c fluid-container list">
+			{% if dances|length != 0 %}
+			{% for dance in dances %}
+					{% if not dance.approved %}
+			    <li class="single-dance-item added-dance col-xs-12 col-md-3">
+						<div class="dance-item" id="{{dance.id}}">
+							<p class="dancetype">{{dance.type_of_dance}}</p>
+							<span style="display: none;" class="id">{{dance.id}}</span>
+							<p class="dancelocation">{{dance.country}}, {{dance.city}}, {{dance.address}}</p>
+							{% if dance.dress_code == "asyouare" %}
+							<p class="dancedress">Dress Code — <span>Come As You Are</span></p>
+							{% elif dance.dress_code == "pants"%}
+							<p class="dancedress">Dress Code — <span>Pants and Nice Shirt</span></p>
+							{% elif dance.dress_code == "tux"%}
+							<p class="dancedress">Dress Code — <span>Tuxedo</span></p>
+							{% elif dance.dress_code == "suit"%}
+							<p class="dancedress">Dress Code — <span>Suit and Tie</span></p>
+							{% else %}
+							<p class="dancedress">Dress Code — <span>Casual</span></p>
+							{% endif %}
+							<p class="dancecost">Cost to Attend — $ <span>{{dance.cost}}</span></p>
+							<button type="button" class="btn btn-success approve-bttn">Approve</button>
+							<button type="button" class="btn btn-danger del-bttn">Delete</button>
+						</div>
+					</li>
+					{% else %}
+					<li class="single-dance-item added-dance col-xs-12 col-md-3">
+						<div class="dance-item" id="{{dance.id}}">
+							<p class="dancetype">{{dance.type_of_dance}}</p>
+							<span style="display: none;" class="id">{{dance.id}}</span>
+							<p class="dancelocation">{{dance.country}}, {{dance.city}}, {{dance.address}}</p>
+							{% if dance.dress_code == "asyouare" %}
+							<p class="dancedress">Dress Code — <span>Come As You Are</span></p>
+							{% elif dance.dress_code == "pants"%}
+							<p class="dancedress">Dress Code — <span>Pants and Nice Shirt</span></p>
+							{% elif dance.dress_code == "tux"%}
+							<p class="dancedress">Dress Code — <span>Tuxedo</span></p>
+							{% elif dance.dress_code == "suit"%}
+							<p class="dancedress">Dress Code — <span>Suit and Tie</span></p>
+							{% else %}
+							<p class="dancedress">Dress Code — <span>Casual</span></p>
+							{% endif %}
+							<p class="dancecost">Cost to Attend — $ <span>{{dance.cost}}</span></p>
+							<button type="button" class="btn btn-default" disabled="true">Approved!</button>
+							<button type="button" class="btn btn-danger del-bttn">Delete</button>
+						</div>
+					</li>
+					{% endif %}
+			{% endfor %}
+			{% else %}
+			No dances :(
+			{% endif %}
+			<li class="single-dance-item added-dance col-xs-12 col-md-3">
+				<div class="dance-item" data-toggle="modal" data-target="#myModal">
+					<div class="modaltrig">+</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+	<div class="container">
+	<footer>
+		<hr>
+		<p>All Rights Reserved. <a href="/">Dancing Places, Inc.</a><p><p class="pull-right"><a href="/logout">Log Out</a></p>
+	</footer>
+</div>
 </body>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+<script src="../static/js/dashboard.js"></script>
+<script src="../static/js/admin_dashboard.js"></script>
+
 <script type="text/javascript">
+
+
 	var options = {
-    valueNames: [ 'id', 'country', 'type']
-};
-var hackerList = new List('list', options);
+		valueNames: [ 'id', 'dancetype', 'dancelocation', 'dancedress', 'dancecost']
+	};
+	var hackerList = new List('mainlist', options);
 </script>
 </html>

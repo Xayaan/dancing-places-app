@@ -14,7 +14,7 @@ class User(db.Model):
 	user_status = db.Column(db.Integer)
 	pwdhash = db.Column(db.String(255))
 	salt = db.Column(db.String(255))
-	
+
 	def __init__(self, fullname, email, password):
 		self.set_name(fullname)
 		self.email = email
@@ -42,7 +42,7 @@ class User(db.Model):
 	# Required for Administrative Interface
 
 	def __unicode__(self):
-		return self.email	
+		return self.email
 
 	def set_name(self, fullname):
 		for i in fullname:
@@ -52,7 +52,7 @@ class User(db.Model):
 				except ValueError:
 					pass
 				else:
-					raise Exception("Invalid Input")	
+					raise Exception("Invalid Input")
 		try:
 			self.firstname, self.lastname = fullname.split(" ")
 		except ValueError:

@@ -1,29 +1,30 @@
-function makeItem(id, country, city, dance){
-	return '<tr class="success"><td class="id">id-goes-here</td><td class="type">dance-goes-here</td><td class="country">country-goes-here, city-goes-here</td><td>Already Approved</td><td><button class="del-bttn btn btn-block btn-danger">Cancel</button></td></tr>'.replace("id-goes-here", id).replace("dance-goes-here", dance).replace("country-goes-here", country).replace("city-goes-here", city);
+function makeItem(id, type, country, city, address, dress, cost) {
+	return '<div class="dance-item" id="%%id%%"><p class="dance-type">%%type%%</p><p class="dance-location">%%country%%, %%city%%, %%address%%</p><p class="dance-dress">Dress Code — <span>%%dress%%</span></p><p class="dance-cost">Cost to Attend — $ <span>%%cost%%</span></p><button type="button" class="btn btn-default" disabled="true">Approved!</button><button type="button" class="btn btn-danger del-bttn">Delete</button></div>'.replace('%%id%%', id).replace('%%type%%', type).replace('%%country%%', country).replace('%%city%%', city).replace('%%address%%', address).replace('%%dress%%', dress).replace('%%cost%%', cost)
 }
 
 $(document).on('click', '.approve-bttn', function(){
-	var elem = $(this).parent().parent()
-	$.getJSON('/dance/approve', 
+	var elem = $(this).parent()
+	$.getJSON('/dance/approve',
 		 {
-		 	object_id: $(this).parent().parent().find('.id').text()
+		 	object_id: $(this).parent().attr('id')
 		 }, function(data){
 		 	if(data.string == "200 OK"){
-		 		elem.replaceWith(makeItem(data.object_id, data.country, data.city, data.type))
+				elem.remove()
+				hackerList.add( { dancetype: data.type, dancelocation: data.country + ', ' + data.city + ', ' + data.address, dancedress: data.dress, dancecost: data.cost } );
 		 	}
 		 });
 });
 
 $(document).on('click', '.del-bttn', function(){
-	var elem = $(this).parent().parent()
-	$.getJSON('/dance/delete', 
+	var elem = $(this).parent()
+	$.getJSON('/dance/delete',
 		 {
-		 	object_id: $(this).parent().parent().find('.id').text()
+		 	object_id: $(this).parent().attr('id')
 		 }, function(data){
 		 	if(data.string == "200 OK"){
-		 		var itemId = $(elem).find('.id').text();
-				hackerList.remove('id', itemId); 
-		 		elem.remove();
+		 		var itemId = $(elem).attr('id')
+				hackerList.remove('id', itemId);
+		 		elem.parent().remove();
 		 	}
 		 });
 });
