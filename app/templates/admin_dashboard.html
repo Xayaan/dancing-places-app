@@ -130,8 +130,6 @@
     <!-- End modal -->
 
 
-    
-
     <div class="topbar"></div>
     <div class="container">
       <div class="row">
@@ -143,46 +141,97 @@
 	  {% if dances|length != 0 %}
 	  {% for dance in dances %}
 	  {% if not dance.approved %}
+
+	  <!-- Dance Info -->
+	  
 	  <li class="single-dance-item added-dance col-xs-12 col-md-3">
-	    <div class="dance-item" id="{{dance.id}}">
-	      <p class="dancetype">{{dance.type_of_dance}}</p>
-	      <span style="display: none;" class="id">{{dance.id}}</span>
-	      <p class="dancelocation">{{dance.country}}, {{dance.city}}, {{dance.address}}</p>
+	    <div class="dance-item">
+	      <p class="dance-type">{{dance.type_of_dance}}</p>
+	      <p class="dance-location">{{dance.country}}, {{dance.city}}, {{dance.address}}</p>
 	      {% if dance.dress_code == "asyouare" %}
-	      <p class="dancedress">Dress Code — <span>Come As You Are</span></p>
+	      <p class="dance-dress">Dress Code — <span>Come As You Are</span></p>
 	      {% elif dance.dress_code == "pants"%}
-	      <p class="dancedress">Dress Code — <span>Pants and Nice Shirt</span></p>
+	      <p class="dance-dress">Dress Code — <span>Pants and Nice Shirt</span></p>
 	      {% elif dance.dress_code == "tux"%}
-	      <p class="dancedress">Dress Code — <span>Tuxedo</span></p>
+	      <p class="dance-dress">Dress Code — <span>Tuxedo</span></p>
 	      {% elif dance.dress_code == "suit"%}
-	      <p class="dancedress">Dress Code — <span>Suit and Tie</span></p>
+	      <p class="dance-dress">Dress Code — <span>Suit and Tie</span></p>
 	      {% else %}
-	      <p class="dancedress">Dress Code — <span>Casual</span></p>
+	      <p class="dance-dress">Dress Code — <span>Casual</span></p>
 	      {% endif %}
-	      <p class="dancecost">Cost to Attend — $ <span>{{dance.cost}}</span></p>
+	      <p class="dance-cost">Cost to Attend — $ <span>{{dance.cost}}</span></p>
+	      <p class="dance-days">When: {% if dance.days %}{{ dance.days }} in {% endif %}{{ dance.months }}</p>
+	      {% if dance.website %}
+	      <p class="dance-web">Website: {{ dance.website }}</p>
+	      {% endif %}
+	      {% if dance.facebook %}
+	      <p class="dance-web">Facebook: {{ dance.facebook }}</p>
+	      {% endif %}
+	      {% if dance.twitter %}
+	      <p class="dance-web">Twitter: {{ dance.twitter }}</p>
+	      {% endif %}
+	      {% if dance.meetup %}
+	      <p class="dance-web">Meetup: {{ dance.meetup }}</p>
+	      {% endif %}
+	      {% if dance.contact_email %}
+	      <p class="dance-email">Contact: {{ dance.contact_email }}</p>
+	      {% endif %}
+	      {% if dance.notes %}
+	      <p class="dance-notes">Notes: {{ dance.notes }}</p>
+	      {% endif %}
+
+	      <!-- /Dance Info -->
+	      
 	      <button type="button" class="btn btn-success approve-bttn">Approve</button>
+	      <button type="button" class="btn btn-info edit-bttn">Edit</button>
+	      <br><br>
 	      <button type="button" class="btn btn-danger del-bttn">Delete</button>
 	    </div>
 	  </li>
 	  {% else %}
+
+	  <!-- Dance Info -->
+
 	  <li class="single-dance-item added-dance col-xs-12 col-md-3">
-	    <div class="dance-item" id="{{dance.id}}">
-	      <p class="dancetype">{{dance.type_of_dance}}</p>
-	      <span style="display: none;" class="id">{{dance.id}}</span>
-	      <p class="dancelocation">{{dance.country}}, {{dance.city}}, {{dance.address}}</p>
+	    <div class="dance-item">
+	      <p class="dance-type">{{dance.type_of_dance}}</p>
+	      <p class="dance-location">{{dance.country}}, {{dance.city}}, {{dance.address}}</p>
 	      {% if dance.dress_code == "asyouare" %}
-	      <p class="dancedress">Dress Code — <span>Come As You Are</span></p>
+	      <p class="dance-dress">Dress Code — <span>Come As You Are</span></p>
 	      {% elif dance.dress_code == "pants"%}
-	      <p class="dancedress">Dress Code — <span>Pants and Nice Shirt</span></p>
+	      <p class="dance-dress">Dress Code — <span>Pants and Nice Shirt</span></p>
 	      {% elif dance.dress_code == "tux"%}
-	      <p class="dancedress">Dress Code — <span>Tuxedo</span></p>
+	      <p class="dance-dress">Dress Code — <span>Tuxedo</span></p>
 	      {% elif dance.dress_code == "suit"%}
-	      <p class="dancedress">Dress Code — <span>Suit and Tie</span></p>
+	      <p class="dance-dress">Dress Code — <span>Suit and Tie</span></p>
 	      {% else %}
-	      <p class="dancedress">Dress Code — <span>Casual</span></p>
+	      <p class="dance-dress">Dress Code — <span>Casual</span></p>
 	      {% endif %}
-	      <p class="dancecost">Cost to Attend — $ <span>{{dance.cost}}</span></p>
-	      <button type="button" class="btn btn-default" disabled="true">Approved!</button>
+	      <p class="dance-cost">Cost to Attend — $ <span>{{dance.cost}}</span></p>
+	      <p class="dance-days">When: {% if dance.days %}{{ dance.days }} in {% endif %}{{ dance.months }}</p>
+	      {% if dance.website %}
+	      <p class="dance-web">Website: {{ dance.website }}</p>
+	      {% endif %}
+	      {% if dance.facebook %}
+	      <p class="dance-web">Facebook: {{ dance.facebook }}</p>
+	      {% endif %}
+	      {% if dance.twitter %}
+	      <p class="dance-web">Twitter: {{ dance.twitter }}</p>
+	      {% endif %}
+	      {% if dance.meetup %}
+	      <p class="dance-web">Meetup: {{ dance.meetup }}</p>
+	      {% endif %}
+	      {% if dance.contact_email %}
+	      <p class="dance-email">Contact: {{ dance.contact_email }}</p>
+	      {% endif %}
+	      {% if dance.notes %}
+	      <p class="dance-notes">Notes: {{ dance.notes }}</p>
+	      {% endif %}
+	      
+
+	      <!-- /Dance Info -->
+	      
+	      <button type="button" class="btn btn-info edit-bttn">Edit</button>
 	      <button type="button" class="btn btn-danger del-bttn">Delete</button>
 	    </div>
 	  </li>
