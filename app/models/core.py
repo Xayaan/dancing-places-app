@@ -73,13 +73,14 @@ class User(db.Model):
 class Dance(db.Model):
 	__tablename__ = 'dance'
 	id = db.Column(db.Integer, primary_key = True)
-	country = db.Column(db.String(255))
-	city = db.Column(db.String(255))
-	address = db.Column(db.Text())
-	cost = db.Column(db.Integer())
-	type_of_dance = db.Column(db.String())
-	dress_code = db.Column(db.String())
-	months = db.Column(db.String())
+	country = db.Column(db.String(255)) #
+	city = db.Column(db.String(255)) #
+	address = db.Column(db.Text()) #
+	cost = db.Column(db.Integer()) #
+	type_of_dance = db.Column(db.String()) #
+	dress_code = db.Column(db.String()) #
+    # days = db.Column(db.String())
+	months = db.Column(db.String()) 
 	website = db.Column(db.String())
 	facebook = db.Column(db.String())
 	twitter = db.Column(db.String())

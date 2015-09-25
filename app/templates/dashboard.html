@@ -24,26 +24,18 @@
 
 	    <div class="row">
 	      <div class="col-xs-12 col-md-6">
-		<input type="text" class="form-control" id="address-input" placeholder="Street Address">
+		<input type="text" class="form-control" id="address-input" placeholder="Street Address or Location Name">
 	      </div>
-
 	      <div class="col-xs-12 col-md-6">
-		<input type="text" class="form-control" id="address-input" placeholder="Location Name">
+		<input type="text" class="main-form-input form-control" id="city-input" placeholder="City">
 	      </div>
 	    </div>
 	    <br>
 	    <div class="row">
 	      <div class="col-xs-12 col-md-6">
-		<input type="text" class="main-form-input form-control" id="city-input" placeholder="City">
-	      </div>
-
-	      <div class="col-xs-12 col-md-6">
 		<input type="text" class="main-form-input form-control" id="state-input" placeholder="State/Region">
 	      </div>
-	    </div
-	       >	<br>
-	    <div class="row">
-	      <div class="col-xs-12 col-md-6 col-md-offset-6">
+	      <div class="col-xs-12 col-md-6">
 		<input type="text" class="main-form-input form-control" id="country-input" placeholder="Country">
 	      </div>
 	    </div>
@@ -101,19 +93,20 @@
 		</div>
 		<div class="months col-xs-12 col-md-6">
 		  <h4>Months</h4>
+
 		  <div class="well well-sm">
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="jan" class="all-months-one">January</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="feb" class="all-months-one">February</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="march" class="all-months-one">March</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="apr" class="all-months-one">April</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="may" class="all-months-one">May</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="jun" class="all-months-one">June</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="jul" class="all-months-one">July</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="aug" class="all-months-one">August</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="sept" class="all-months-one">September</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="oct" class="all-months-one">October</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="nov" class="all-months-one">November</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="dec" class="all-months-one">December</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="January" class="all-months-one">January</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="February" class="all-months-one">February</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="March" class="all-months-one">March</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="April" class="all-months-one">April</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="May" class="all-months-one">May</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="June" class="all-months-one">June</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="July" class="all-months-one">July</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="August" class="all-months-one">August</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="September" class="all-months-one">September</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="October" class="all-months-one">October</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="November" class="all-months-one">November</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="December" class="all-months-one">December</label></div>
 		  </div>
 		</div>
 	      </div>
@@ -169,6 +162,22 @@
 	      <p class="dance-dress">Dress Code — <span>Casual</span></p>
 	      {% endif %}
 	      <p class="dance-cost">Cost to Attend — $ <span>{{dance.cost}}</span></p>
+	      <p class="dance-days">When: {{ dance.months }}</p>
+	      {% if dance.website %}
+	      <p class="dance-web">Website: {{ dance.website }}</p>
+	      {% endif %}
+	      {% if dance.facebook %}
+	      <p class="dance-web">Facebook: {{ dance.facebook }}</p>
+	      {% endif %}
+	      {% if dance.twitter %}
+	      <p class="dance-web">Twitter: {{ dance.twitter }}</p>
+	      {% endif %}
+	      {% if dance.meetup %}
+	      <p class="dance-web">Meetup: {{ dance.meetup }}</p>
+	      {% endif %}
+	      {% if dance.contact_email %}
+	      <p class="dance-email">Contact: {{ dance.contact_email }}</p>
+	      {% endif %}
 	    </div>
 	  </li>
 	  {% endif %}
@@ -196,6 +205,8 @@
 	<p>All Rights Reserved. <a href="/">Theorybee, Inc.</a><p>
       </footer>
     </div>
+
+    <span class="hidden" id="total-months">January, March, April</span>
   </body>
   <script src="../static/js/jquery.min.js"></script>
   <script src="../static/js/bootstrap.js"></script>
