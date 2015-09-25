@@ -72,6 +72,7 @@ $(document).on('click', '.club-upper', function(){
 });
 
 $(document).on('click', '.submit-dance', function(){
+  console.log("submitting dance");
 	if($('#country-input').val().length != 0 && $('#city-input').val().length != 0 && $('#address-input').val().length != 0 && $('#cost-input').val().length != 0 && $('#dress-input').val().length != 0){
 		if($('.upper').hasClass('active-upper')){
 			$.getJSON('/dance/add',
