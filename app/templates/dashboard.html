@@ -42,11 +42,6 @@
 	    <br>
 	    <br>
 	    
-	    <!-- <div class="form-group"> -->
-	    <!-- <input type="text" class="form-control" id="address-input" placeholder="Street Address"> -->
-
-
-	    <!-- </div> -->
 	    <div class="input-group">
 	      <div class="input-group-addon">$</div>
 	      <input type="text" class="form-control" id="cost-input" placeholder="Cost">
@@ -81,14 +76,14 @@
 		<div class="days col-xs-12 col-md-6">
 		  <h5>Days</h5>
 		  <div class="well well-sm">
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="everyday" onclick="all_check();" class="everyday">Everyday</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="saturday" class="all-days-one">Saturday</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="sunday" class="all-days-one">Sunday</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="monday" class="all-days-one">Monday</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="tuesday" class="all-days-one">Tuesday</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="wednesday" class="all-days-one">Wednesday</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="thursday" class="all-days-one">Thursday</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="friday" class="all-days-one">Friday</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="everyday" onclick="all_check();" class="everyday"><strong><u>Everyday<u></strong></label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="Saturday" class="all-days-one">Saturday</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="Sunday" class="all-days-one">Sunday</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="Monday" class="all-days-one">Monday</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="Tuesday" class="all-days-one">Tuesday</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="Wednesday" class="all-days-one">Wednesday</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="Thursday" class="all-days-one">Thursday</label></div>
+		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="Friday" class="all-days-one">Friday</label></div>
 		  </div>
 		</div>
 		<div class="months col-xs-12 col-md-6">
@@ -119,7 +114,7 @@
 		<input type="text" class="main-form-input form-control" id="twitter-input" placeholder="Twitter Link"><br>
 		<input type="text" class="main-form-input form-control" id="meetup-input" placeholder="Meetup Link"><br>
 		<input type="text" class="main-form-input form-control" id="contact-input" placeholder="Contact Person or Email"><br>
-		<input type="text" class="main-form-input form-control" id="additional-input" placeholder="Additional Notes">
+		<input type="text" class="main-form-input form-control" id="notes-input" placeholder="Additional Notes">
 	      </div>
 	    </div>
 	  </div>
@@ -162,7 +157,7 @@
 	      <p class="dance-dress">Dress Code — <span>Casual</span></p>
 	      {% endif %}
 	      <p class="dance-cost">Cost to Attend — $ <span>{{dance.cost}}</span></p>
-	      <p class="dance-days">When: {{ dance.months }}</p>
+	      <p class="dance-days">When: {% if dance.days %}{{ dance.days }} in {% endif %}{{ dance.months }}</p>
 	      {% if dance.website %}
 	      <p class="dance-web">Website: {{ dance.website }}</p>
 	      {% endif %}
@@ -178,6 +173,10 @@
 	      {% if dance.contact_email %}
 	      <p class="dance-email">Contact: {{ dance.contact_email }}</p>
 	      {% endif %}
+	      {% if dance.notes %}
+	      <p class="dance-notes">Notes: {{ dance.notes }}</p>
+	      {% endif %}
+
 	    </div>
 	  </li>
 	  {% endif %}

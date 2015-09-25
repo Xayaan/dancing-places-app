@@ -50,7 +50,21 @@ def login():
 
 @app.route("/dance/add", methods=['GET','POST'])
 def dance_add():
-	dance_request = models.core.Dance(country = request.args.get('country', '0'), city = request.args.get('city', '0'), address = request.args.get('address', '0'), cost = request.args.get('cost', '0'), type_of_dance = request.args.get('dance_type', '0'), dress_code = request.args.get('dress', '0'), months = request.args.get('months', '0'), website = request.args.get('website', '0'), facebook = request.args.get('facebook', '0'), twitter = request.args.get('twitter', '0'), meetup = request.args.get('meetup', '0'), contact_email = request.args.get('contact', '0'), notes = request.args.get('notes', '0'), approved = False)
+	dance_request = models.core.Dance(country = request.args.get('country', '0'),
+                                      city = request.args.get('city', '0'),
+                                      address = request.args.get('address', '0'),
+                                      cost = request.args.get('cost', '0'),
+                                      type_of_dance = request.args.get('dance_type', '0'),
+                                      dress_code = request.args.get('dress', '0'),
+                                      days = request.args.get('days', '0'),
+                                      months = request.args.get('months', '0'),
+                                      website = request.args.get('website', '0'),
+                                      facebook = request.args.get('facebook', '0'),
+                                      twitter = request.args.get('twitter', '0'),
+                                      meetup = request.args.get('meetup', '0'),
+                                      contact_email = request.args.get('contact', '0'),
+                                      notes = request.args.get('notes', '0'),
+                                      approved = False)
 
 	db.session.add(dance_request)
 	db.session.commit()

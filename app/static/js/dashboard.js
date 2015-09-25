@@ -1,5 +1,9 @@
 function all_check(){
-  $('.all-days-one').trigger('click');
+  var allDays = $('.all-days-one')
+  for (var i=0; i<allDays.length; i++){
+    allDays[i].checked = true;
+  }
+  $('.everyday')[0].checked = false;
 }
 
 var ballroom_options = '<div class="well well-sm"> \
@@ -87,11 +91,15 @@ function joinMonths(){
   return outMonths.substring(0, outMonths.length - 2)
 }
 
-$(function() {
+function unCheckAll(){
   var checkboxes = $("input[type='checkbox']")
   for (var i=0; i<checkboxes.length; i++){
     checkboxes[i].checked = false;
   }
+}
+
+$(function() {
+  unCheckAll()
 })
 
 $(function() {
@@ -106,6 +114,17 @@ $(function() {
   })
 })
 
+function getDays(){
+  var outDays = ''
+  var allDays = $('.all-days-one')
+  for (var i=0; i<allDays.length; i++){
+    if (allDays[i].checked == true){
+      outDays = outDays + $(allDays[i]).val() + ", "
+    }
+  }
+  return outDays.substring(0, outDays.length - 2)
+}
+
 $(document).on('click', '.submit-dance', function(){
   console.log("submitting dance");
   if($('#country-input').val().length != 0 && $('#city-input').val().length != 0 && $('#address-input').val().length != 0 && $('#cost-input').val().length != 0 && $('#dress-input').val().length != 0){
@@ -118,7 +137,7 @@ $(document).on('click', '.submit-dance', function(){
 		  cost: $('#cost-input').val(),
 		  dress: $('#dress-input').val(),
 		  dance_type: $('.active-upper').text(),
-		  // months: $('#mo-input').val(),
+                  days: getDays(),
 		  months: joinMonths(),
 		  website: $('#website-input').val(),
 		  meetup: $('#meetup-input').val(),
@@ -130,6 +149,7 @@ $(document).on('click', '.submit-dance', function(){
 		     if(data.string == "200 OK"){
 		       alert("Dance submitted for review. Thank you!");
                        $('#myModal').modal('toggle');
+                       unCheckAll()
 		     }
 		   });
     } else{
@@ -139,4 +159,3 @@ $(document).on('click', '.submit-dance', function(){
     alert("Fill in the basic details!")
   }
 });
-
