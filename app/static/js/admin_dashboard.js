@@ -18,14 +18,17 @@ $(document).on('click', '.approve-bttn', function(){
 
 $(document).on('click', '.del-bttn', function(){
   var elem = $(this).parent()
-  $.getJSON('/dance/delete',
-	    {
-	      object_id: $(this).parent().attr('id')
-	    }, function(data){
-		 if(data.string == "200 OK"){
-		   var itemId = $(elem).attr('id')
-		   hackerList.remove('id', itemId);
-		   elem.parent().remove();
-		 }
-	       });
+  var delete_confirm = window.confirm("Delete?")
+  if (delete_confirm){
+    $.getJSON('/dance/delete',
+              {
+                object_id: $(this).parent().attr('id')
+              }, function(data){
+        	   if(data.string == "200 OK"){
+        	     var itemId = $(elem).attr('id')
+        	     hackerList.remove('id', itemId);
+        	     elem.parent().remove();
+        	   }
+                 });
+  }
 });
