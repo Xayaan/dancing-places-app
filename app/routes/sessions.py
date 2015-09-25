@@ -12,7 +12,7 @@ def user_home():
 
 @app.route("/xyz", methods=['GET','POST'])
 def home():
-	if current_user.is_anonymous():
+	if not current_user.is_anonymous():
 		r = lambda: random.randint(0,255)
 		color = '#%02X%02X%02X' % (r(),r(),r())
 		form = forms.sessions.UserRegisterForm()
@@ -26,7 +26,7 @@ def home():
 			login_user(user)
 			return redirect(url_for('dashboard'))
 	else:
-		return redirect(url_for('dashboard'))
+		return redirect(url_for('user_home'))
 
 @app.route("/login", methods=['GET','POST'])
 def login():
