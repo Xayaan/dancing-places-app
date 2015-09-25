@@ -119,7 +119,7 @@
 			<div class="logo"><img class="logo-img" src="../static/img/logo.png"></div>
   	</div>
 		<div id="mainlist">
-		<input type="text" class="search form-control" placeholder="Type Keywords Here and Press Enter ... ">
+		<input type="text" class="search form-control" placeholder="Type keywords here">
 		<ul class="dance-c fluid-container list">
 			{% if dances|length != 0 %}
 			{% for dance in dances %}
@@ -149,7 +149,13 @@
 			{% endif %}
 			<li class="single-dance-item added-dance col-xs-12 col-md-3">
 				<div class="dance-item" data-toggle="modal" data-target="#myModal">
-					<div class="modaltrig">+</div>
+				  <!-- <div class="modaltrig">+</div> -->
+				  <center>
+				    <div class="add-dance">Know of a dance?<br><br>
+				      Click here to add it!
+				    </div>
+				    <div class="modaltrig-small">+</div>
+				  </center>
 				</div>
 			</li>
 		</ul>
@@ -158,7 +164,7 @@
 	<div class="container">
 	<footer>
 		<hr>
-		<p>All Rights Reserved. <a href="/">Dancing Places, Inc.</a><p>
+		<p>All Rights Reserved. <a href="/">Theorybee, Inc.</a><p>
 	</footer>
 </div>
 </body>
