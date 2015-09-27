@@ -7,14 +7,13 @@
   </head>
   <body>
 
-
     <div class="topbar"></div>
     <div class="container">
       <div class="row">
 	<div class="logo"><img class="logo-img" src="/static/img/logo.png"><span class="label label-info">ADMIN</span></div>
       </div>
       <div id="mainlist">
-	<form>
+	<form action="/dance/{{ dance_entry.id }}/edit" method="POST">
 	  <h4>Basic Information</h4><br>
 	  <div class="row">
 	    <div class="col-xs-12 col-md-6">
@@ -69,7 +68,9 @@
 	    <input type="text" class="main-form-input form-control" id="contact-input" placeholder="Contact Person or Email" value="{{ dance_entry.contact }}"><br>
 	    <input type="text" class="main-form-input form-control" id="notes-input" placeholder="Additional Notes" value="{{ dance_entry.notes }}">
 	  </div>
-
+	  <center>
+	    <input id="edit_submit" type="submit" value="Save Edits">
+	  </center>
 	</form>
       </div>
     </div>

@@ -127,3 +127,9 @@ footer{
 .checkbox label {
     cursor: text;
 }
+
+#edit_submit {
+    margin-top:1em;
+    padding: .5em;
+    font-size: 1.5em;
+}
