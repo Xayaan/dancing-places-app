@@ -99,3 +99,8 @@ def dashboard():
 def logout():
 	logout_user()
 	return redirect(url_for('home'))
+
+@app.route("/dance/<int:entry_id>/edit", methods=['GET', 'POST'])
+def dance_edit(entry_id):
+    return "Entry id: {}".format(entry_id)
+

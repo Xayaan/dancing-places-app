@@ -183,7 +183,9 @@
 	      <!-- /Dance Info -->
 	      
 	      <button type="button" class="btn btn-success approve-bttn">Approve</button>
-	      <button type="button" class="btn btn-info edit-bttn">Edit</button>
+	      <a href="dance/{{ dance.id }}/edit">
+		<button type="button" class="btn btn-info edit-bttn">Edit</button>
+	      </a>
 	      <br><br>
 	      <button type="button" class="btn btn-danger del-bttn">Delete</button>
 	    </div>
@@ -230,8 +232,10 @@
 	      
 
 	      <!-- /Dance Info -->
-	      
-	      <button type="button" class="btn btn-info edit-bttn">Edit</button>
+
+	      <a href="dance/{{ dance.id }}/edit">
+		<button type="button" class="btn btn-info edit-bttn">Edit</button>
+	      </a>
 	      <button type="button" class="btn btn-danger del-bttn">Delete</button>
 	    </div>
 	  </li>
