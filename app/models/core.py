@@ -75,6 +75,7 @@ class Dance(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     country = db.Column(db.String(255)) #
     city = db.Column(db.String(255)) #
+    state = db.Column(db.String(255)) #
     address = db.Column(db.Text()) #
     cost = db.Column(db.Integer()) #
     type_of_dance = db.Column(db.String()) #

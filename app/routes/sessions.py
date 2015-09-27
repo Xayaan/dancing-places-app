@@ -101,9 +101,30 @@ def logout():
 	return redirect(url_for('home'))
 
 @app.route("/dance/<int:entry_id>/edit", methods=['GET', 'POST'])
+@login_required
 def dance_edit(entry_id):
     if request.method == 'POST':
-        return "POST"
+        f = request.form
+        dance_entry = db.session.query(models.core.Dance).filter_by(id=entry_id).first()
+        dance_entry.country = f['country-input']
+        dance_entry.state = f['state-input']
+        dance_entry.city = f['city-input']
+        dance_entry.address = f['address-input']
+        dance_entry.cost = f['cost-input']
+        dance_entry.type_of_dance = f['types-input']
+        dance_entry.dress_code = f['dress-code-input']
+        dance_entry.days = f['days-input']
+        dance_entry.months = f['months-input']
+        dance_entry.website = f['website-input']
+        dance_entry.facebook = f['facebook-input']
+        dance_entry.twitter = f['twitter-input']
+        dance_entry.meetup = f['meetup-input']
+        dance_entry.contact_email = f['contact-input']
+        dance_entry.notes = f['notes-input']
+        
+        db.session.commit()
+        return redirect(url_for('dashboard'))
+
     else:
         dance_entry = models.core.Dance.query.filter_by(id=entry_id).first()
         return render_template("edit_entry.html", dance_entry=dance_entry)

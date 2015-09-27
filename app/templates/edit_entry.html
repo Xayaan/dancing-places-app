@@ -17,19 +17,19 @@
 	  <h4>Basic Information</h4><br>
 	  <div class="row">
 	    <div class="col-xs-12 col-md-6">
-	      <input type="text" class="form-control" id="address-input" placeholder="Street Address or Location Name" value="{{ dance_entry.address }}">
+	      <input type="text" class="form-control" name="address-input" placeholder="Street Address or Location Name" value="{{ dance_entry.address }}">
 	    </div>
 	    <div class="col-xs-12 col-md-6">
-	      <input type="text" class="main-form-input form-control" id="city-input" placeholder="City" value="{{ dance_entry.city }}">
+	      <input type="text" class="main-form-input form-control" name="city-input" placeholder="City" value="{{ dance_entry.city }}">
 	    </div>
 	  </div>
 	  <br>
 	  <div class="row">
 	    <div class="col-xs-12 col-md-6">
-	      <input type="text" class="main-form-input form-control" id="state-input" placeholder="State/Region" value="{{ dance_entry.state }}">
+	      <input type="text" class="main-form-input form-control" name="state-input" placeholder="State/Region" value="{{ dance_entry.state }}">
 	    </div>
 	    <div class="col-xs-12 col-md-6">
-	      <input type="text" class="main-form-input form-control" id="country-input" placeholder="Country" value="{{ dance_entry.country }}">
+	      <input type="text" class="main-form-input form-control" name="country-input" placeholder="Country" value="{{ dance_entry.country }}">
 	    </div>
 	  </div>
 	  <br>
@@ -37,11 +37,17 @@
 	  <div class="row">
 	    <div class="col-xs-12 col-md-6">
 	      <h4>Types of dance</h4>
-	      <input type="text" class="main-form-input form-control" id="types-input" placeholder="Types of dance" value="{{ dance_entry.types_of_dance }}">
+	      <input type="text" class="main-form-input form-control" name="types-input" placeholder="Types of dance" value="{{ dance_entry.types_of_dance }}">
 	    </div>
 	    <div class="col-xs-12 col-md-6">
 	      <h4>Dress code</h4>
-	      <input type="text" class="main-form-input form-control" id="dress-code-input" placeholder="Dress code" value="{{ dance_entry.dress_code }}">
+	      <input type="text" class="main-form-input form-control" name="dress-code-input" placeholder="Dress code" value="{{ dance_entry.dress_code }}">
+	    </div>
+	  </div>
+	  	  <div class="row">
+	    <div class="col-xs-12 col-md-6">
+	      <h4>Cost</h4>
+	      <input type="text" class="main-form-input form-control" name="cost-input" placeholder="Types of dance" value="{{ dance_entry.cost }}">
 	    </div>
 	  </div>
 	  <br>
@@ -49,11 +55,11 @@
 	  <div class="row">
 	    <div class="col-xs-12 col-md-6">
 	      <h4>Days</h4>
-	      <input type="text" class="main-form-input form-control" id="types-input" placeholder="Days" value="{{ dance_entry.days }}">
+	      <input type="text" class="main-form-input form-control" name="days-input" placeholder="Days" value="{{ dance_entry.days }}">
 	    </div>
 	    <div class="col-xs-12 col-md-6">
 	      <h4>Months</h4>
-	      <input type="text" class="main-form-input form-control" id="dress-code-input" placeholder="Months" value="{{ dance_entry.months }}">
+	      <input type="text" class="main-form-input form-control" name="months-input" placeholder="Months" value="{{ dance_entry.months }}">
 	    </div>
 	  </div>
 	  <br>
@@ -61,12 +67,12 @@
 	  
 	  <div class="form-group">
 	    <h4>Additional Information</h4><br>
-	    <input type="text" class="main-form-input form-control" id="website-input" placeholder="Website Link" value="{{ dance_entry.website }}"><br>
-	    <input type="text" class="main-form-input form-control" id="facebook-input" placeholder="Facebook Link" value="{{ dance_entry.facebook }}"><br>
-	    <input type="text" class="main-form-input form-control" id="twitter-input" placeholder="Twitter Link" value="{{ dance_entry.twitter }}"><br>
-	    <input type="text" class="main-form-input form-control" id="meetup-input" placeholder="Meetup Link" value="{{ dance_entry.meetup }}"><br>
-	    <input type="text" class="main-form-input form-control" id="contact-input" placeholder="Contact Person or Email" value="{{ dance_entry.contact }}"><br>
-	    <input type="text" class="main-form-input form-control" id="notes-input" placeholder="Additional Notes" value="{{ dance_entry.notes }}">
+	    <input type="text" class="main-form-input form-control" name="website-input" placeholder="Website Link" value="{{ dance_entry.website }}"><br>
+	    <input type="text" class="main-form-input form-control" name="facebook-input" placeholder="Facebook Link" value="{{ dance_entry.facebook }}"><br>
+	    <input type="text" class="main-form-input form-control" name="twitter-input" placeholder="Twitter Link" value="{{ dance_entry.twitter }}"><br>
+	    <input type="text" class="main-form-input form-control" name="meetup-input" placeholder="Meetup Link" value="{{ dance_entry.meetup }}"><br>
+	    <input type="text" class="main-form-input form-control" name="contact-input" placeholder="Contact Person or Email" value="{{ dance_entry.contact }}"><br>
+	    <input type="text" class="main-form-input form-control" name="notes-input" placeholder="Additional Notes" value="{{ dance_entry.notes }}">
 	  </div>
 	  <center>
 	    <input id="edit_submit" type="submit" value="Save Edits">
