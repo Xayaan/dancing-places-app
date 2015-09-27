@@ -102,5 +102,7 @@ def logout():
 
 @app.route("/dance/<int:entry_id>/edit", methods=['GET', 'POST'])
 def dance_edit(entry_id):
-    return render_template("edit_entry.html", entry_id=entry_id)
+    dance_entry = models.core.Dance.query.filter_by(id=entry_id).first()
+    return render_template("edit_entry.html", dance_entry=dance_entry)
+
 
