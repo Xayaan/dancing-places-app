@@ -102,5 +102,5 @@ def logout():
 
 @app.route("/dance/<int:entry_id>/edit", methods=['GET', 'POST'])
 def dance_edit(entry_id):
-    return "Entry id: {}".format(entry_id)
+    return render_template("edit_entry.html", entry_id=entry_id)
 

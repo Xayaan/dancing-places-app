@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dancing Places</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+  </head>
+  <body>
+
+
+    <div class="topbar"></div>
+    <div class="container">
+      <div class="row">
+	<div class="logo"><img class="logo-img" src="/static/img/logo.png"><span class="label label-info">ADMIN</span></div>
+      </div>
+      <div id="mainlist">
+	<form>
+	  <h4>Basic Information</h4><br>
+	  <div class="row">
+	    <div class="col-xs-12 col-md-6">
+	      <input type="text" class="form-control" id="address-input" placeholder="Street Address or Location Name">
+	    </div>
+	    <div class="col-xs-12 col-md-6">
+	      <input type="text" class="main-form-input form-control" id="city-input" placeholder="City">
+	    </div>
+	  </div>
+	  <br>
+	  <div class="row">
+	    <div class="col-xs-12 col-md-6">
+	      <input type="text" class="main-form-input form-control" id="state-input" placeholder="State/Region">
+	    </div>
+	    <div class="col-xs-12 col-md-6">
+	      <input type="text" class="main-form-input form-control" id="country-input" placeholder="Country">
+	    </div>
+	  </div>
+	  <br>
+	  <br>
+	  <div class="row">
+	    <div class="col-xs-12 col-md-6">
+	      <h4>Types of dance</h4>
+	      <input type="text" class="main-form-input form-control" id="types-input" placeholder="Types of dance">
+	    </div>
+	    <div class="col-xs-12 col-md-6">
+	      <h4>Dress code</h4>
+	      <input type="text" class="main-form-input form-control" id="dress-code-input" placeholder="Dress code">
+	    </div>
+	  </div>
+	  <br>
+	  <br>
+	  <div class="row">
+	    <div class="col-xs-12 col-md-6">
+	      <h4>Days</h4>
+	      <input type="text" class="main-form-input form-control" id="types-input" placeholder="Types of dance">
+	    </div>
+	    <div class="col-xs-12 col-md-6">
+	      <h4>Months</h4>
+	      <input type="text" class="main-form-input form-control" id="dress-code-input" placeholder="Dress code">
+	    </div>
+	  </div>
+	  <br>
+	  <br>
+	  
+	  <div class="form-group">
+	    <h4>Additional Information</h4><br>
+	    <input type="text" class="main-form-input form-control" id="website-input" placeholder="Website Link"><br>
+	    <input type="text" class="main-form-input form-control" id="facebook-input" placeholder="Facebook Link"><br>
+	    <input type="text" class="main-form-input form-control" id="twitter-input" placeholder="Twitter Link"><br>
+	    <input type="text" class="main-form-input form-control" id="meetup-input" placeholder="Meetup Link"><br>
+	    <input type="text" class="main-form-input form-control" id="contact-input" placeholder="Contact Person or Email"><br>
+	    <input type="text" class="main-form-input form-control" id="notes-input" placeholder="Additional Notes">
+	  </div>
+
+	</form>
+	<!-- <div class="row"> -->
+	<!--   <div class="col-md-12"> -->
+	<!--     {{ entry_id }} -->
+	<!--     <form> -->
+	      
+	<!--     </form> -->
+	<!--   </div> <\!-- end form column -\-> -->
+	</div>
+      </div>
+    </div>
+    <div class="container">
+      <footer>
+	<hr>
+	<p>All Rights Reserved. <a href="/">Dancing Places, Inc.</a><p><p class="pull-right"><a href="/logout">Log Out</a></p>
+      </footer>
+    </div>
+  </body>
+  <script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/bootstrap.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+  <script src="../static/js/dashboard.js"></script>
+  <script src="../static/js/admin_dashboard.js"></script>
+
+  <script type="text/javascript">
+
+
+    var options = {
+    valueNames: [ 'id', 'dancetype', 'dancelocation', 'dancedress', 'dancecost']
+    };
+    var hackerList = new List('mainlist', options);
+  </script>
+</html>
