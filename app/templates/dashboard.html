@@ -126,17 +126,30 @@
       </div>
     </div>
 
-
     <!-- End modal -->
     
-
     <div class="topbar"></div>
     <div class="container">
       <div class="row">
 	<div class="logo"><img class="logo-img" src="../static/img/logo.png"></div>
       </div>
       <div id="mainlist">
-	<input type="text" class="search form-control" placeholder="Type keywords here">
+	<div class="row">
+	  <div class="col-md-4">
+	    <button id="add-dance-button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add a dance</button>
+	  </div>
+	  <div class="col-md-4">
+	    <input type="text" class="search form-control" placeholder="Type keywords here">
+	  </div>
+	  <div class="col-md-4">
+	    <a href="/login">
+	      <button id="moderator-button" class="btn btn-warning pull-right">Moderator Login</button>
+	    </a>
+
+	  </div>
+
+	  <!-- <input id="input-search" type="text" class="search form-control" placeholder="Type keywords here"> -->
+	  
 	<ul class="dance-c fluid-container list">
 	  {% if dances|length != 0 %}
 	  {% for dance in dances %}
@@ -182,7 +195,18 @@
 	  {% endif %}
 	  {% endfor %}
 	  {% else %}
-	  No dances :(
+	  <li class="single-dance-item added-dance col-xs-12 col-md-3">
+	    <div class="dance-item" data-toggle="modal" data-target="#myModal">
+	      <!-- <div class="modaltrig">+</div> -->
+	      <center>
+		<div class="add-dance">Know of a dance?<br><br>
+		  Click here to add it!
+		</div>
+		<div class="modaltrig-small">+</div>
+	      </center>
+	    </div>
+	  </li>
+	  
 	  {% endif %}
 	  <li class="single-dance-item added-dance col-xs-12 col-md-3">
 	    <div class="dance-item" data-toggle="modal" data-target="#myModal">

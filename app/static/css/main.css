@@ -133,3 +133,12 @@ footer{
     padding: .5em;
     font-size: 1.5em;
 }
+
+#add-dance-button {
+    margin-left:1em;
+    margin-top:3px;
+}
+
+#moderator-button {
+    margin-top:3px;
+}
