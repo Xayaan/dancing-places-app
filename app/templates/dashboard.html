@@ -1,3 +1,5 @@
+{% import 'modal_add.html' as modal_add %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,126 +9,7 @@
   </head>
   <body>
 
-    <!-- Start modal -->
-
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog actual-form" role="document">
-	<div class="modal-content">
-
-	  <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Found a new place to dance with others? Enter it here!</h4>
-	  </div>
-	  
-	  <div class="modal-body">
-	    <br>
-	    <h4>Basic Information</h4><br>
-
-	    <div class="row">
-	      <div class="col-xs-12 col-md-6">
-		<input type="text" class="form-control" id="address-input" placeholder="Street Address or Location Name">
-	      </div>
-	      <div class="col-xs-12 col-md-6">
-		<input type="text" class="main-form-input form-control" id="city-input" placeholder="City">
-	      </div>
-	    </div>
-	    <br>
-	    <div class="row">
-	      <div class="col-xs-12 col-md-6">
-		<input type="text" class="main-form-input form-control" id="state-input" placeholder="State/Region">
-	      </div>
-	      <div class="col-xs-12 col-md-6">
-		<input type="text" class="main-form-input form-control" id="country-input" placeholder="Country">
-	      </div>
-	    </div>
-	    <br>
-	    <br>
-	    
-	    <div class="input-group">
-	      <div class="input-group-addon">$</div>
-	      <input type="text" class="form-control" id="cost-input" placeholder="Cost">
-	      <div class="input-group-addon">.00</div>
-	    </div><br>
-	    <h4>Type of Dance</h4>
-	    <div class="type-upper">
-	      <h5 class="ballroom-upper upper">Ballroom</h5>
-	      <h5 class="club-upper upper">Club</h5>
-	      <h5 class="country-upper upper">Country</h5>
-	      <h5 class="latin-upper upper">Latin</h5>
-	      <h5 class="swing-upper upper">Swing</h5>
-	    </div><br>
-	    <div class="type-inner">
-	    </div><br>
-
-	    <h4>Minimum Dress Code</h4><br>
-	    <select id="dress-input" class="form-control">
-	      <option value="asyouare">Come As You Are</option>
-	      <option value="casual">Casual</option>
-	      <option value="pants">Pants and Nice Shirt</option>
-	      <option value="suit">Suit and Tie</option>
-	      <option value="tux">Tuxedo</option>
-	    </select>
-
-	    <div class="timing-selector">
-	      <div class="upper-date"><br>
-		<h4>How often?</h4>
-	      </div>
-
-	      <div class="append-times row">
-		<div class="days col-xs-12 col-md-6">
-		  <h5>Days</h5>
-		  <div class="well well-sm">
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="everyday" onclick="all_check();" class="everyday"><strong><u>Everyday<u></strong></label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="Saturday" class="all-days-one">Saturday</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="Sunday" class="all-days-one">Sunday</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="Monday" class="all-days-one">Monday</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="Tuesday" class="all-days-one">Tuesday</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="Wednesday" class="all-days-one">Wednesday</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="Thursday" class="all-days-one">Thursday</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="days" value="Friday" class="all-days-one">Friday</label></div>
-		  </div>
-		</div>
-		<div class="months col-xs-12 col-md-6">
-		  <h4>Months</h4>
-
-		  <div class="well well-sm">
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="January" class="all-months-one">January</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="February" class="all-months-one">February</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="March" class="all-months-one">March</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="April" class="all-months-one">April</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="May" class="all-months-one">May</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="June" class="all-months-one">June</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="July" class="all-months-one">July</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="August" class="all-months-one">August</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="September" class="all-months-one">September</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="October" class="all-months-one">October</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="November" class="all-months-one">November</label></div>
-		    <div class="checkbox"> <label> <input type="checkbox" name="months" value="December" class="all-months-one">December</label></div>
-		  </div>
-		</div>
-	      </div>
-	    </div>
-	    <div class="others"><br>
-	      <h4>Additional Information</h4><br>
-	      <div class="form-group">
-		<input type="text" class="main-form-input form-control" id="website-input" placeholder="Website Link"><br>
-		<input type="text" class="main-form-input form-control" id="facebook-input" placeholder="Facebook Link"><br>
-		<input type="text" class="main-form-input form-control" id="twitter-input" placeholder="Twitter Link"><br>
-		<input type="text" class="main-form-input form-control" id="meetup-input" placeholder="Meetup Link"><br>
-		<input type="text" class="main-form-input form-control" id="contact-input" placeholder="Contact Person or Email"><br>
-		<input type="text" class="main-form-input form-control" id="notes-input" placeholder="Additional Notes">
-	      </div>
-	    </div>
-	  </div>
-	  <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary submit-dance">Submit for Review</button>
-	  </div>
-	</div>
-      </div>
-    </div>
-
-    <!-- End modal -->
+    {{ modal_add.modal_add() }}
     
     <div class="topbar"></div>
     <div class="container">
