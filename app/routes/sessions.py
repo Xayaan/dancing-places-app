@@ -12,21 +12,21 @@ def user_home():
 
 @app.route("/xyz", methods=['GET','POST'])
 def home():
-	if not current_user.is_anonymous():
-		r = lambda: random.randint(0,255)
-		color = '#%02X%02X%02X' % (r(),r(),r())
-		form = forms.sessions.UserRegisterForm()
+	# if not current_user.is_anonymous():
+    r = lambda: random.randint(0,255)
+    color = '#%02X%02X%02X' % (r(),r(),r())
+    form = forms.sessions.UserRegisterForm()
 
-		if request.method == "GET":
-			return render_template("home.html", color = color, form = form)
-		else:
-			user = models.core.User(fullname = form.fullname.data, email = form.email.data, password = form.password.data)
-			db.session.add(user)
-			db.session.commit()
-			login_user(user)
-			return redirect(url_for('dashboard'))
-	else:
-		return redirect(url_for('user_home'))
+    if request.method == "GET":
+        return render_template("home.html", color = color, form = form)
+    else:
+        user = models.core.User(fullname = form.fullname.data, email = form.email.data, password = form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+        return redirect(url_for('dashboard'))
+	# else:
+	# 	return redirect(url_for('user_home'))
 
 @app.route("/login", methods=['GET','POST'])
 def login():

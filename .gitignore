@@ -3,6 +3,8 @@
 *tmp*
 commit.txt
 
+*.wsgi
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
