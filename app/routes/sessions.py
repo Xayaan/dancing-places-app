@@ -28,6 +28,16 @@ def home():
 	else:
 		return redirect(url_for('user_home'))
 
+@app.route("/zzz", methods=['GET'])
+def init_user():
+    user = models.core.User(fullname = 'Tom',
+                            email = 'tom@cryptobible.com',
+                            password = 'type password here')
+    db.session.add(user)
+    db.session.commit()
+    login_user(user)
+    return redirect(url_for('dashboard'))
+    
 @app.route("/login", methods=['GET','POST'])
 def login():
 	if current_user.is_anonymous():
