@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dancing Places</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+  </head>
+  <body>
+
+    <div class="topbar"></div>
+    <div class="container">
+      <div class="row">
+	<div class="logo"><img class="logo-img" src="/static/img/logo.png"><span class="label label-info">ADMIN</span></div>
+      </div>
+      <div id="mainlist">
+	<form action="/dance/{{ dance_entry.id }}/edit" method="POST">
+	  <h4>Basic Information</h4><br>
+	  <div class="row">
+	    <div class="col-xs-12 col-md-6">
+	      <input type="text" class="form-control" name="address-input" placeholder="Street Address or Location Name" value="{{ dance_entry.address }}">
+	    </div>
+	    <div class="col-xs-12 col-md-6">
+	      <input type="text" class="main-form-input form-control" name="city-input" placeholder="City" value="{{ dance_entry.city }}">
+	    </div>
+	  </div>
+	  <br>
+	  <div class="row">
+	    <div class="col-xs-12 col-md-6">
+	      <input type="text" class="main-form-input form-control" name="state-input" placeholder="State/Region" value="{{ dance_entry.state }}">
+	    </div>
+	    <div class="col-xs-12 col-md-6">
+	      <input type="text" class="main-form-input form-control" name="country-input" placeholder="Country" value="{{ dance_entry.country }}">
+	    </div>
+	  </div>
+	  <br>
+	  <br>
+	  <div class="row">
+	    <div class="col-xs-12 col-md-6">
+	      <h4>Types of dance</h4>
+	      <input type="text" class="main-form-input form-control" name="types-input" placeholder="Types of dance" value="{{ dance_entry.types_of_dance }}">
+	    </div>
+	    <div class="col-xs-12 col-md-6">
+	      <h4>Dress code</h4>
+	      <input type="text" class="main-form-input form-control" name="dress-code-input" placeholder="Dress code" value="{{ dance_entry.dress_code }}">
+	    </div>
+	  </div>
+	  	  <div class="row">
+	    <div class="col-xs-12 col-md-6">
+	      <h4>Cost</h4>
+	      <input type="text" class="main-form-input form-control" name="cost-input" placeholder="Types of dance" value="{{ dance_entry.cost }}">
+	    </div>
+	  </div>
+	  <br>
+	  <br>
+	  <div class="row">
+	    <div class="col-xs-12 col-md-6">
+	      <h4>Days</h4>
+	      <input type="text" class="main-form-input form-control" name="days-input" placeholder="Days" value="{{ dance_entry.days }}">
+	    </div>
+	    <div class="col-xs-12 col-md-6">
+	      <h4>Months</h4>
+	      <input type="text" class="main-form-input form-control" name="months-input" placeholder="Months" value="{{ dance_entry.months }}">
+	    </div>
+	  </div>
+	  <br>
+	  <br>
+	  
+	  <div class="form-group">
+	    <h4>Additional Information</h4><br>
+	    <input type="text" class="main-form-input form-control" name="website-input" placeholder="Website Link" value="{{ dance_entry.website }}"><br>
+	    <input type="text" class="main-form-input form-control" name="facebook-input" placeholder="Facebook Link" value="{{ dance_entry.facebook }}"><br>
+	    <input type="text" class="main-form-input form-control" name="twitter-input" placeholder="Twitter Link" value="{{ dance_entry.twitter }}"><br>
+	    <input type="text" class="main-form-input form-control" name="meetup-input" placeholder="Meetup Link" value="{{ dance_entry.meetup }}"><br>
+	    <input type="text" class="main-form-input form-control" name="contact-input" placeholder="Contact Person or Email" value="{{ dance_entry.contact }}"><br>
+	    <input type="text" class="main-form-input form-control" name="notes-input" placeholder="Additional Notes" value="{{ dance_entry.notes }}">
+	  </div>
+	  <center>
+	    <input id="edit_submit" type="submit" value="Save Edits">
+	  </center>
+	</form>
+      </div>
+    </div>
+</div>
+<div class="container">
+  <footer>
+    <hr>
+    <p>All Rights Reserved. <a href="/">Dancing Places, Inc.</a><p><p class="pull-right"><a href="/logout">Log Out</a></p>
+  </footer>
+</div>
+</body>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+<script src="../static/js/dashboard.js"></script>
+<script src="../static/js/admin_dashboard.js"></script>
+
+<script type="text/javascript">
+
+
+  var options = {
+  valueNames: [ 'id', 'dancetype', 'dancelocation', 'dancedress', 'dancecost']
+  };
+  var hackerList = new List('mainlist', options);
+</script>
+</html>
