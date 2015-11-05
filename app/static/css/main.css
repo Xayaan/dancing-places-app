@@ -36,7 +36,10 @@ input:focus, button:focus{
 .single-dance-item{
 	list-style: none;
 	padding: 10px;
+	cursor:pointer;
 }
+
+
 
 .dance-item{
 	border: 1px #DDD solid;
@@ -109,4 +112,33 @@ footer{
 	color: #000;
 	border-radius: 4px;
 	display: inline-block;
+}
+
+.add-dance {
+    padding-top:10%;
+}
+
+.modaltrig-small {
+	padding: 20px 0px 0px 0px;
+	text-align: center;
+	font-size: 30px;
+}
+
+.checkbox label {
+    cursor: text;
+}
+
+#edit_submit {
+    margin-top:1em;
+    padding: .5em;
+    font-size: 1.5em;
+}
+
+#add-dance-button {
+    margin-left:1em;
+    margin-top:3px;
+}
+
+#moderator-button {
+    margin-top:3px;
 }
